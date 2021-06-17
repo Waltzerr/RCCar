@@ -11,6 +11,14 @@ GPIO.setup(18, GPIO.OUT)
 
 while True:
   input=readchar.readkey()
+  
+  if input=="e":
+    GPIO.output(16, GPIO.HIGH) #forwards
+    GPIO.output(13, GPIO.HIGH) #right
+  else:
+    GPIO.output(16, GPIO.LOW) #forwards
+    GPIO.output(13, GPIO.LOW) #right
+  
   if input=="w":
     GPIO.output(16, GPIO.HIGH) #forwards
   else:
