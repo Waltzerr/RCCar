@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import readchar
+from pynput.keyboard import Listener
 from time import sleep
 
 GPIO.setmode(GPIO.BOARD)
@@ -8,26 +8,15 @@ GPIO.setup(11, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
-
-while True:
-  input=""
-  input=readchar.readkey()
-  GPIO.output(16, GPIO.LOW)
-  if input=="w":
-    GPIO.output(16, GPIO.HIGH) #forwards
-    
-  if input=="s":
-    GPIO.output(18, GPIO.HIGH) #backwards
-    
-  if input=="a":
-    GPIO.output(11, GPIO.HIGH) #left
-    
-  if input=="d":
-    GPIO.output(13, GPIO.HIGH) #right
-    
-  if input=="q":
-    break
   
+def on_press(key):
+    print("Key pressed: {0}".format(key))
+
+def on_release(key):
+    print("Key released: {0}".format(key))
+    
+with Listener(on_press=on_press, on_release=on_release) as listener:  # Create an instance of Listener
+    listener.join()  # Join the listener thread to the main thread to keep waiting for keys
 
 #GPIO.output(18, GPIO.HIGH) #backwards
 #sleep(2)
