@@ -11,9 +11,8 @@ GPIO.setup(18, GPIO.OUT)
 
 while True:
   input=readchar.readkey()
-  
+  chan_list = (16,13)
   if input=="e":
-    chan_list = (16,13)
     GPIO.output(chan_list, GPIO.HIGH) #forwards
   else:
     GPIO.output(chan_list, GPIO.LOW) #forwards
