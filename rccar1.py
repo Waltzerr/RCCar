@@ -10,8 +10,8 @@ GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 
 while True:
-  print("Start of loop")
   input=readchar.readkey()
+  print(input)
   GPIO.output(16, GPIO.LOW)
   if input=="w":
     GPIO.output(16, GPIO.HIGH) #forwards
