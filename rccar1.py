@@ -13,11 +13,10 @@ while True:
   input=readchar.readkey()
   
   if input=="e":
-    GPIO.output(16, GPIO.HIGH) #forwards
-    GPIO.output(13, GPIO.HIGH) #right
+    chan_list = (16,13)
+    GPIO.output(chan_list, GPIO.HIGH) #forwards
   else:
-    GPIO.output(16, GPIO.LOW) #forwards
-    GPIO.output(13, GPIO.LOW) #right
+    GPIO.output(chan_list, GPIO.LOW) #forwards
   
   if input=="w":
     GPIO.output(16, GPIO.HIGH) #forwards
