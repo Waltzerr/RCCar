@@ -12,4 +12,16 @@ GPIO.output(18, GPIO.HIGH)
 sleep(2)
 GPIO.output(18, GPIO.LOW)
 
+GPIO.output(13, GPIO.HIGH)
+sleep(2)
+GPIO.output(13, GPIO.LOW)
+
+GPIO.output(16, GPIO.HIGH)
+sleep(2)
+GPIO.output(16, GPIO.LOW)
+
+GPIO.output(11, GPIO.HIGH)
+sleep(2)
+GPIO.output(11, GPIO.LOW)
+
 GPIO.cleanup()
