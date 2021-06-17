@@ -11,10 +11,9 @@ GPIO.setup(18, GPIO.OUT)
 
 while True:
   input=readchar.readkey()
+  GPIO.output(16, GPIO.LOW)
   if input=="w":
     GPIO.output(16, GPIO.HIGH) #forwards
-  else:
-    GPIO.output(16, GPIO.LOW) #forwards
     
   if input=="s":
     GPIO.output(18, GPIO.HIGH) #backwards
