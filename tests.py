@@ -15,7 +15,7 @@ while True:
   
     if input=="w":
         chan_list.append(16)
-    if input=="w":
+    if input=="e":
         chan_list.append(16)
         chan_list.append(13)
     
