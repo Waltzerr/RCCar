@@ -11,28 +11,27 @@ GPIO.setup(18, GPIO.OUT)
 
 input_delay=float(input("Enter time between inputs: "))
 while True:
-    input=readchar.readkey()
     chan_list = []
-  
-    if input=="w":
-        chan_list.append(16)
-    
-    if input=="e":
-        chan_list.append(16)
-        chan_list.append(13)
-    
-    if input=="s":
-        chan_list.append(18)
-    
-    if input=="a":
-        chan_list.append(11)
-    
-    if input=="d":
-        chan_list.append(13)
-    
-    if input=="q":
-        break
+    for i in range(2):
+        input=readchar.readkey()
+        if input=="w":
+            chan_list.append(16)
+        
+        if input=="s":
+            chan_list.append(18)
+        
+        if input=="a":
+            chan_list.append(11)
+        
+        if input=="d":
+            chan_list.append(13)
+        
+        if input=="q":
+            break
 
+    if chan_list[0] == chan_list[1]:
+        chan_list.remove(chan_list[1])
+    
     GPIO.output(tuple(chan_list), GPIO.HIGH)
     print(f"GPIO outs: {chan_list}")
     sleep(input_delay)
