@@ -9,7 +9,7 @@ GPIO.setup(13, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 
-input_delay=int(input("Enter time between inputs: "))
+input_delay=float(input("Enter time between inputs: "))
 while True:
     input=readchar.readkey()
     chan_list = []
