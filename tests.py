@@ -15,12 +15,25 @@ while True:
   
     if input=="w":
         chan_list.append(16)
+
     if input=="e":
         chan_list.append(16)
         chan_list.append(13)
+
+    if input=="q":
+        chan_list.append(16)
+        chan_list.append(11)
     
     if input=="s":
         chan_list.append(18)
+
+    if input=="x":
+        chan_list.append(18)
+        chan_list.append(13)
+
+    if input=="z":
+        chan_list.append(18)
+        chan_list.append(11)
     
     if input=="a":
         chan_list.append(11)
@@ -28,7 +41,7 @@ while True:
     if input=="d":
         chan_list.append(13)
     
-    if input=="q":
+    if input=="←":
         break
 
     GPIO.output(tuple(chan_list), GPIO.HIGH)
