@@ -30,6 +30,7 @@ while True:
         break
 
     GPIO.output(tuple(chan_list), GPIO.HIGH)
+    print(f"GPIO outs: {chan_list}")
     sleep(input_delay)
     GPIO.output(tuple(chan_list), GPIO.LOW)
   
