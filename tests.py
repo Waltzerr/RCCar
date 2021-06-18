@@ -17,6 +17,10 @@ while True:
     if input=="w":
         chan_list.append(16)
     
+    if input=="e":
+        chan_list.append(16)
+        chan_list.append(11)
+    
     if input=="s":
         chan_list.append(18)
     
