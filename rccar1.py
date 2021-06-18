@@ -9,10 +9,6 @@ GPIO.setup(13, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 
-GPIO.output(18, GPIO.HIGH) #backwards
-sleep(2)
-GPIO.output(18, GPIO.LOW)
-
 while True:
   input=readchar.readkey()
   chan_list = (16,13)
