@@ -10,51 +10,37 @@ GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 
 while True:
-  input=readchar.readkey()
-  chan_list = (16,13)
-  if input=="e":
-    GPIO.output(chan_list, GPIO.HIGH) #forwards
-  else:
-    GPIO.output(chan_list, GPIO.LOW) #forwards
+    input=readchar.readkey()
+    chan_list = []
   
-  if input=="w":
-    GPIO.output(16, GPIO.HIGH) #forwards
-  else:
-    GPIO.output(16, GPIO.LOW) #forwards
+    if input=="w":
+        chan_list.append(16)
+
+    if input=="e":
+        chan_list.append(16)
+        chan_list.append(13)
+
+    if input=="q":
+        chan_list.append(16)
+        chan_list.append(11)
     
-  if input=="s":
-    GPIO.output(18, GPIO.HIGH) #backwards
-  else:
-    GPIO.output(18, GPIO.LOW) #backwards
+    if input=="s":
+        chan_list.append(18)
+
+    if input=="d":
+        chan_list.append(18)
+        chan_list.append(13)
+
+    if input=="a":
+        chan_list.append(18)
+        chan_list.append(11)
     
-  if input=="a":
-    GPIO.output(11, GPIO.HIGH) #left
-  else:
-    GPIO.output(11, GPIO.LOW) #left
-    
-  if input=="d":
-    GPIO.output(13, GPIO.HIGH) #right
-  else:
-    GPIO.output(13, GPIO.LOW) #right
-    
-  if input=="q":
-    break
+    if input=="r":
+        break
+
+    GPIO.output(tuple(chan_list), GPIO.HIGH)
+    print(f"GPIO outs: {chan_list}")
+    sleep(0.45)
+    GPIO.output(tuple(chan_list), GPIO.LOW)
   
-
-#GPIO.output(18, GPIO.HIGH) #backwards
-#sleep(2)
-#GPIO.output(18, GPIO.LOW)
-
-#GPIO.output(13, GPIO.HIGH) #right
-#sleep(2)
-#GPIO.output(13, GPIO.LOW)
-
-#GPIO.output(16, GPIO.HIGH) #forwards
-#sleep(2)
-#GPIO.output(16, GPIO.LOW)
-
-#GPIO.output(11, GPIO.HIGH) #left
-#sleep(2)
-#GPIO.output(11, GPIO.LOW)
-
 GPIO.cleanup()
