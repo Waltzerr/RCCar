@@ -6,7 +6,7 @@ class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
-    def on_L3_left(1000):
+    def on_L3_left(self, 1000):
        print("cum")
 
 
