@@ -25,10 +25,10 @@ class MyController(Controller):
     def on_circle_release(self):
        GPIO.output(18, GPIO.LOW)
 
-    def on_L3_left(self):
+    def on_L3_left(self, value):
        GPIO.output(11, GPIO.HIGH)
 
-    def on_L3_right(self):
+    def on_L3_right(self, value):
        GPIO.output(13, GPIO.HIGH)
 
     def on_L3_x_at_rest(self):

@@ -7,7 +7,7 @@ class MyController(Controller):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-       print("cum")
+       print("debug")
 
 
 controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
