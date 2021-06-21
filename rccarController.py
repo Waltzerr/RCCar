@@ -34,7 +34,7 @@ class MyController(Controller):
     def on_L3_x_at_rest(self):
        GPIO.output((11, 13), GPIO.LOW)
     
-    def on_playstation_button_release(self):
+    def on_options_press(self):
         GPIO.cleanup()
         quit()
 
