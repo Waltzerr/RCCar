@@ -31,6 +31,7 @@ class MyController(Controller):
         print(f"Angle: {angle}")
 
     def on_L3_x_at_rest(self):
+        sleep(0.3)
         servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
