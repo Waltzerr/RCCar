@@ -18,21 +18,22 @@ class MyController(Controller):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-        global angle
-        if angle < 180:
-            angle += 1
-        servo1.ChangeDutyCycle(2+(angle/18))
-        print(f"Angle: {angle}")
+        servo1.ChangeDutyCycle(12)
+        # global angle
+        # if angle < 180:
+        #     angle += 1
+        # servo1.ChangeDutyCycle(2+(angle/18))
+        # print(f"Angle: {angle}")
 
     def on_L3_right(self, value):
-        global angle
-        if angle > 0:
-            angle -= 1
-        servo1.ChangeDutyCycle(2+(angle/18))
-        print(f"Angle: {angle}")
+        servo1.ChangeDutyCycle(2)
+        # global angle
+        # if angle > 0:
+        #     angle -= 1
+        # servo1.ChangeDutyCycle(2+(angle/18))
+        # print(f"Angle: {angle}")
 
     def on_L3_x_at_rest(self):
-        sleep(0.3)
         servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
