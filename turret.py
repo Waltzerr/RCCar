@@ -35,7 +35,9 @@ try:
     # you can start listening before controller is paired, as long as you pair it within the timeout window
     controller.listen(timeout=60)
 except:
-    print("Error connecting to controller")
+    print("Error")
+    servo1.stop()
+    GPIO.cleanup()
     quit()
 
 
