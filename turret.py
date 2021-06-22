@@ -21,8 +21,6 @@ class MyController(Controller):
         if duty<12:
             duty += 1
         servo1.ChangeDutyCycle(duty)
-        sleep(0.1)
-        servo1.ChangeDutyCycle(0)
         print(f"Duty: {duty}")
 
     def on_L3_right(self, value):
@@ -30,14 +28,11 @@ class MyController(Controller):
         if duty>1:
             duty += -1
         servo1.ChangeDutyCycle(duty)
-        sleep(0.1)
-        servo1.ChangeDutyCycle(0)
         print(f"Duty: {duty}")
 
     def on_L3_x_at_rest(self):
         servo1.ChangeDutyCycle(0)
 
-    
     def on_circle_press(self):
         servo1.stop()
         GPIO.cleanup()
@@ -86,6 +81,3 @@ except:
 # servo1.ChangeDutyCycle(2)
 # sleep(0.5)
 # servo1.ChangeDutyCycle(0)
-
-servo1.stop()
-GPIO.cleanup()
