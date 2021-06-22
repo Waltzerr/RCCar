@@ -18,7 +18,7 @@ class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
-    def on_L3_left(self, value):
+    def on_left_arrow_press(self):
         global angle
         global degrees
         print(angle)
@@ -26,7 +26,7 @@ class MyController(Controller):
             angle+=degrees
             servo1.ChangeDutyCycle(2+(angle/18))
 
-    def on_L3_right(self, value):
+    def on_right_arrow_press(self):
         global angle
         global degrees
         print(angle)
@@ -40,7 +40,7 @@ class MyController(Controller):
         # servo1.ChangeDutyCycle(2+(angle/18))
         # print(f"Angle: {angle}")
 
-    def on_L3_x_at_rest(self):
+    def on_left_right_arrow_release(self):
         servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
