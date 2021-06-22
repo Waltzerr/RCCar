@@ -23,6 +23,7 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(duty)
         sleep(0.1)
         servo1.ChangeDutyCycle(0)
+        print(f"Duty: {duty}")
 
     def on_L3_right(self, value):
         global duty
@@ -31,6 +32,12 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(duty)
         sleep(0.1)
         servo1.ChangeDutyCycle(0)
+        print(f"Duty: {duty}")
+    
+    def on_circle_press(self):
+        servo1.stop()
+        GPIO.cleanup()
+        quit()
 
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
