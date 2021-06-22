@@ -8,6 +8,7 @@ GPIO.setup(36, GPIO.OUT)
 servo1 = GPIO.PWM(36,50)
 
 servo1.start(0)
+servo1.ChangeDutyCycle(2)
 servo1.ChangeDutyCycle(0)
 
 angle = 0
@@ -25,7 +26,7 @@ class MyController(Controller):
 
     def on_L3_right(self, value):
         global angle
-        if angle < 180:
+        if angle > 0:
             angle -= 1
         servo1.ChangeDutyCycle(2+(angle/18))
         print(f"Angle: {angle}")
