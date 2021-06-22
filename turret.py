@@ -10,25 +10,25 @@ servo1 = GPIO.PWM(36,50)
 servo1.start(0)
 servo1.ChangeDutyCycle(0)
 
-duty = 0
+angle = 0
 
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-        global duty
-        if duty<12:
-            duty += 1
-        servo1.ChangeDutyCycle(duty)
-        print(f"Duty: {duty}")
+        global angle
+        if angle < 180:
+            angle += 1
+        servo1.ChangeDutyCycle(2+(angle/18))
+        print(f"Angle: {angle}")
 
     def on_L3_right(self, value):
-        global duty
-        if duty>1:
-            duty += -1
-        servo1.ChangeDutyCycle(duty)
-        print(f"Duty: {duty}")
+        global angle
+        if angle < 180:
+            angle -= 1
+        servo1.ChangeDutyCycle(2+(angle/18))
+        print(f"Angle: {angle}")
 
     def on_L3_x_at_rest(self):
         servo1.ChangeDutyCycle(0)
