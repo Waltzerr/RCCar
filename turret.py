@@ -24,7 +24,7 @@ class MyController(Controller):
         if angle < 180:
             angle+=degrees
             servo1.ChangeDutyCycle(2+(angle/18))
-            sleep(0.1)
+            sleep(0.5)
 
     def on_L3_right(self, value):
         global angle
@@ -32,7 +32,7 @@ class MyController(Controller):
         if angle > 0:
             angle-=degrees
             servo1.ChangeDutyCycle(2+(angle/18))
-            sleep(0.1)
+            sleep(0.5)
 
         # global angle
         # if angle > 0:
@@ -44,6 +44,7 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
+        servo1.ChangeDutyCycle(2)
         servo1.stop()
         GPIO.cleanup()
         quit()
