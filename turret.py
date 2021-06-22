@@ -33,6 +33,10 @@ class MyController(Controller):
         sleep(0.1)
         servo1.ChangeDutyCycle(0)
         print(f"Duty: {duty}")
+
+    def on_L3_x_at_rest(self):
+        servo1.ChangeDutyCycle(0)
+
     
     def on_circle_press(self):
         servo1.stop()
