@@ -18,14 +18,16 @@ class MyController(Controller):
 
     def on_L3_left(self, value):
         global duty
-        duty += 1
+        if duty<12:
+            duty += 1
         servo1.ChangeDutyCycle(duty)
         sleep(0.1)
         servo1.ChangeDutyCycle(0)
 
     def on_L3_right(self, value):
         global duty
-        duty += -1
+        if duty>1:
+            duty += -1
         servo1.ChangeDutyCycle(duty)
         sleep(0.1)
         servo1.ChangeDutyCycle(0)
