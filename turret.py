@@ -21,18 +21,18 @@ class MyController(Controller):
     def on_L3_left(self, value):
         global angle
         global degrees
+        print(angle)
         if angle < 180:
             angle+=degrees
             servo1.ChangeDutyCycle(2+(angle/18))
-            sleep(0.5)
 
     def on_L3_right(self, value):
         global angle
         global degrees
+        print(angle)
         if angle > 0:
             angle-=degrees
             servo1.ChangeDutyCycle(2+(angle/18))
-            sleep(0.5)
 
         # global angle
         # if angle > 0:
