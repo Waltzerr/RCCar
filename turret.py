@@ -12,21 +12,26 @@ servo1.ChangeDutyCycle(2)
 servo1.ChangeDutyCycle(0)
 
 angle = 0
+degrees = float(input("Enter degrees to turn servo by: "))
 
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-        servo1.ChangeDutyCycle(12)
-        # global angle
-        # if angle < 180:
-        #     angle += 1
-        # servo1.ChangeDutyCycle(2+(angle/18))
-        # print(f"Angle: {angle}")
+        global angle
+        global degrees
+        if angle < 180:
+            angle+=degrees
+            servo1.ChangeDutyCycle(2+(angle/18))
 
     def on_L3_right(self, value):
-        servo1.ChangeDutyCycle(2)
+        global angle
+        global degrees
+        if angle > 0:
+            angle-=degrees
+            servo1.ChangeDutyCycle(2+(angle/18))
+
         # global angle
         # if angle > 0:
         #     angle -= 1
