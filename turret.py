@@ -13,13 +13,17 @@ duty = 2
 
 while duty <= 12:
     servo1.ChangeDutyCycle(duty)
-    sleep(1)
+    sleep(0.3)
+    servo1.ChangeDutyCycle(0)
+    sleep(0.7)
     duty += 1
 
 sleep(2)
 
 servo1.ChangeDutyCycle(7)
-sleep(2)
+sleep(0.5)
+servo1.ChangeDutyCycle(0)
+sleep(1.5)
 
 servo1.ChangeDutyCycle(2)
 sleep(0.5)
