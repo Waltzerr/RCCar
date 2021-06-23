@@ -22,7 +22,7 @@ class MyController(Controller):
         print(angle)
 
     def on_L3_right(self, value):
-        angle = int((2+(value/182)/18))
+        angle = int((2+((value+32767)/364)/18))
         servo1.ChangeDutyCycle(angle)
         print(angle)
 
