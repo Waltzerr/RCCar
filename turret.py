@@ -17,12 +17,12 @@ class MyController(Controller):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-        angle = (2+((-1*value)/182)/18)
+        angle = int((2+((-1*value)/182)/18))
         servo1.ChangeDutyCycle(angle)
         print(angle)
 
     def on_L3_right(self, value):
-        angle = (2+(value/182)/18)
+        angle = int((2+(value/182)/18))
         servo1.ChangeDutyCycle(angle)
         print(angle)
 
