@@ -18,13 +18,14 @@ class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
-    def on_left_arrow_press(self):
-        global angle
-        global degrees
-        print(angle)
-        if angle < 180:
-            angle+=degrees
-            servo1.ChangeDutyCycle(2+(angle/18))
+    def on_L3_left(self, value):
+        servo1.ChangeDutyCycle((2+((-1*value)/182)/18))
+
+    def on_L3_right(self, value):
+        servo1.ChangeDutyCycle((2+(value/182)/18))
+
+    def on_L3_release(self):
+        servo1.ChangeDutyCycle(0)
 
     def on_right_arrow_press(self):
         global angle
@@ -46,9 +47,6 @@ class MyController(Controller):
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
     controller.listen(timeout=60)
-    if controller.on_left_arrow_press:
-        print('cum')
-
 except:
     print("Error")
     servo1.stop()
