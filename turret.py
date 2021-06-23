@@ -24,7 +24,7 @@ class MyController(Controller):
     def on_L3_right(self, value):
         servo1.ChangeDutyCycle((2+(value/182)/18))
 
-    def on_L3_release(self):
+    def on_L3_x_at_rest(self):
         servo1.ChangeDutyCycle(0)
 
     def on_right_arrow_press(self):
