@@ -34,12 +34,6 @@ class MyController(Controller):
             angle-=degrees
             servo1.ChangeDutyCycle(2+(angle/18))
 
-        # global angle
-        # if angle > 0:
-        #     angle -= 1
-        # servo1.ChangeDutyCycle(2+(angle/18))
-        # print(f"Angle: {angle}")
-
     def on_left_right_arrow_release(self):
         servo1.ChangeDutyCycle(0)
 
@@ -51,44 +45,12 @@ class MyController(Controller):
 
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-    # you can start listening before controller is paired, as long as you pair it within the timeout window
     controller.listen(timeout=60)
+    if controller.on_left_arrow_press:
+        print('cum')
+
 except:
     print("Error")
     servo1.stop()
     GPIO.cleanup()
     quit()
-
-
-# try:
-#     while True:
-#         angle = float(input('Enter angle between 0 and 180: '))
-#         servo1.ChangeDutyCycle(2+(angle/18))
-#         sleep(0.5)
-#         servo1.ChangeDutyCycle(0)
-
-# finally:
-#     servo1.stop()
-#     GPIO.cleanup()
-
-# sleep(2)
-
-# duty = 2
-
-# while duty <= 12:
-#     servo1.ChangeDutyCycle(duty)
-#     sleep(0.3)
-#     servo1.ChangeDutyCycle(0)
-#     sleep(0.7)
-#     duty += 1
-
-# sleep(2)
-
-# servo1.ChangeDutyCycle(7)
-# sleep(0.5)
-# servo1.ChangeDutyCycle(0)
-# sleep(1.5)
-
-# servo1.ChangeDutyCycle(2)
-# sleep(0.5)
-# servo1.ChangeDutyCycle(0)
