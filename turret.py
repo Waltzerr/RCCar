@@ -11,28 +11,38 @@ servo1.start(0)
 servo1.ChangeDutyCycle(2)
 servo1.ChangeDutyCycle(0)
 
+left = False
+right = False
 
+while True:
+    if left:
+        print('left')
+    if right:
+        print('right')
+
+# try booleans and a loop
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-        angle = int((2+((-value+32767)/364)/18))
-        servo1.ChangeDutyCycle(angle)
-        print(angle)
+        global left, right
+        right = False
+        left = True
 
     def on_L3_right(self, value):
-        angle = int((2+((-value+32767)/364)/18))
-        servo1.ChangeDutyCycle(angle)
-        print(angle)
+        global right, left
+        left = False
+        right = True
 
     def on_L3_x_at_rest(self):
-        servo1.ChangeDutyCycle(5)
-        sleep(0.3)
-        servo1.ChangeDutyCycle(0)
+        global left, right
+        left = False
+        right = False
 
     def on_circle_press(self):
         servo1.ChangeDutyCycle(2)
+        sleep(0.5)
         servo1.stop()
         GPIO.cleanup()
         quit()
