@@ -20,7 +20,7 @@ class MyController(Controller):
     def on_L3_left(self, value):
         global xState
         if -value < (32767/2) and xState != 1:
-            servo1.ChangeDutyCycle(10)
+            servo1.ChangeDutyCycle(9.5)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=1
