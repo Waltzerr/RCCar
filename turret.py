@@ -5,7 +5,7 @@ from pyPS4Controller.controller import Controller
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(36, GPIO.OUT)
-servo1 = GPIO.PWM(36,50)
+servo1 = GPIO.PWM(36,25)
 
 servo1.start(0)
 servo1.ChangeDutyCycle(2)
