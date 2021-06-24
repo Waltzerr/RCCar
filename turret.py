@@ -14,12 +14,6 @@ servo1.ChangeDutyCycle(0)
 left = False
 right = False
 
-while True:
-    if left:
-        print('left')
-    if right:
-        print('right')
-
 # try booleans and a loop
 class MyController(Controller):
     def __init__(self, **kwargs):
@@ -50,6 +44,11 @@ class MyController(Controller):
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
     controller.listen(timeout=60)
+    while True:
+        if left:
+            print('left')
+        if right:
+           print('right')
 except:
     print("Error")
     servo1.stop()
