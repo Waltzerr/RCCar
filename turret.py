@@ -23,9 +23,13 @@ class MyController(Controller):
 
     def on_L3_x_at_rest(self):
         servo1.ChangeDutyCycle(7)
+        sleep(0.2)
+        servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
-        servo1.ChangeDutyCycle(2)
+        servo1.ChangeDutyCycle(7)
+        sleep(0.2)
+        servo1.ChangeDutyCycle(0)
         servo1.stop()
         GPIO.cleanup()
         quit()
