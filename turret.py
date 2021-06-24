@@ -21,12 +21,12 @@ class MyController(Controller):
         global xState
         if -value < (32767/2) and xState != 1:
             servo1.ChangeDutyCycle(10)
-            sleep(0.3)
+            sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=1
         if -value > (32767/2) and xState != 2:
             servo1.ChangeDutyCycle(12)
-            sleep(0.3)
+            sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=2
         
