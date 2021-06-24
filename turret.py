@@ -19,12 +19,12 @@ class MyController(Controller):
 
     def on_L3_left(self, value):
         global xState
-        if -value <= (16386) and xState != -1:
+        if -value <= (16553) and xState != -1:
             servo1.ChangeDutyCycle(9.5)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=-1
-        if -value > (16386) and xState != -2:
+        if -value > (16553) and xState != -2:
             servo1.ChangeDutyCycle(12)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
@@ -34,12 +34,12 @@ class MyController(Controller):
 
     def on_L3_right(self, value):
         global xState
-        if value <= (16386) and xState != 1:
+        if value <= (16553) and xState != 1:
             servo1.ChangeDutyCycle(4.5)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=1
-        if value > (16386) and xState != 2:
+        if value > (16553) and xState != 2:
             servo1.ChangeDutyCycle(2)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
