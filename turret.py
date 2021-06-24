@@ -44,11 +44,7 @@ class MyController(Controller):
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
     controller.listen(timeout=60)
-    while True:
-        if left:
-            print('left')
-        if right:
-           print('right')
+    print('cum')
 except:
     print("Error")
     servo1.stop()
