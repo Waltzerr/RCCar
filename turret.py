@@ -11,24 +11,37 @@ servo1.start(0)
 servo1.ChangeDutyCycle(2)
 servo1.ChangeDutyCycle(0)
 
+xState = 0
+
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
-        servo1.ChangeDutyCycle(12)
+        global xState
+        if value < (32767/2) & xState != 1:
+            servo1.ChangeDutyCycle(10)
+            sleep(0.3)
+            servo1.ChangeDutyCycle(0)
+            xState=1
+        if value > (32767/2) & xState != 2:
+            servo1.ChangeDutyCycle(12)
+            sleep(0.3)
+            servo1.ChangeDutyCycle(0)
+            xState=2
+        
 
     def on_L3_right(self, value):
         servo1.ChangeDutyCycle(2)
 
     def on_L3_x_at_rest(self):
         servo1.ChangeDutyCycle(7)
-        sleep(0.2)
+        sleep(0.3)
         servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
         servo1.ChangeDutyCycle(7)
-        sleep(0.2)
+        sleep(0.5)
         servo1.ChangeDutyCycle(0)
         servo1.stop()
         GPIO.cleanup()
