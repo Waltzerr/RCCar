@@ -24,7 +24,7 @@ class MyController(Controller):
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=-1
-        if -value > (16386) and xState != -2:
+        elif xState != -2:
             servo1.ChangeDutyCycle(12)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
@@ -38,7 +38,7 @@ class MyController(Controller):
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=1
-        if value > (16386) and xState != 2:
+        elif xState != 2:
             servo1.ChangeDutyCycle(2)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
