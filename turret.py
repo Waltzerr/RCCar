@@ -28,8 +28,9 @@ class MyController(Controller):
         global xState
         state = getState(-value)
         if state != xState:
+            print(f"{state}, {xState}")
             servo1.ChangeDutyCycle(state+7)
-            sleep(0.1)
+            sleep(0.05)
             servo1.ChangeDutyCycle(0)
             xState=-state
         # if -value <= (15384) and xState != -1:
