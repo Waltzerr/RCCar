@@ -104,7 +104,7 @@ class MyController(Controller):
        GPIO.output(29, GPIO.LOW)
 
     def on_R1_press(self, value):
-        if GPIO.input(29):
+        if GPIO.output(29):
             GPIO.output(29, GPIO.HIGH)
         else:
             GPIO.output(29, GPIO.LOW)
