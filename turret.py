@@ -65,7 +65,7 @@ class MyController(Controller):
         state = getState(-value)
         if -state != yState:
             print(f"{state}, {yState}")
-            servo2.ChangeDutyCycle(state+7)
+            servo2.ChangeDutyCycle(7-state)
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
             yState=-state
@@ -77,7 +77,7 @@ class MyController(Controller):
         state = getState(value)
         if state != yState:
             print(f"{state}, {yState}")
-            servo2.ChangeDutyCycle(7-state)
+            servo2.ChangeDutyCycle(state+7)
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
             yState=state
