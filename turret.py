@@ -97,11 +97,18 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(0)
         quit()
 
-    def on_triangle_press(self):
+    def on_R2_press(self, value):
        GPIO.output(29, GPIO.HIGH)
 
-    def on_triangle_release(self):
+    def on_R2_release(self):
        GPIO.output(29, GPIO.LOW)
+
+    def on_R1_press(self, value):
+        if GPIO.input(29):
+            GPIO.output(29, GPIO.HIGH)
+        else:
+            GPIO.output(29, GPIO.LOW)
+
 
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
