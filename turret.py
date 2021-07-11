@@ -44,11 +44,12 @@ class MyController(Controller):
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=2
+        print(f"Value: {value}, State: {xState}")
 
     def on_L3_x_at_rest(self):
         global xState
         servo1.ChangeDutyCycle(7)
-        sleep(0.3)
+        sleep(0.2)
         servo1.ChangeDutyCycle(0)
         xState = 0
 
@@ -56,15 +57,12 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(7)
         sleep(0.5)
         servo1.ChangeDutyCycle(0)
-        servo1.stop()
-        GPIO.cleanup()
         quit()
 
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
     controller.listen(timeout=60)
 except:
-    print("Error")
     servo1.stop()
     GPIO.cleanup()
     quit()
