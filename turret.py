@@ -8,6 +8,7 @@ GPIO.setup(36, GPIO.OUT)
 servo1 = GPIO.PWM(36,50)
 GPIO.setup(32, GPIO.OUT)
 servo2 = GPIO.PWM(32,50)
+GPIO.setup(29, GPIO.OUT)
 
 servo1.start(0)
 servo1.ChangeDutyCycle(2)
@@ -95,6 +96,12 @@ class MyController(Controller):
         sleep(0.25)
         servo1.ChangeDutyCycle(0)
         quit()
+
+    def on_triangle_press(self):
+       GPIO.output(29, GPIO.HIGH)
+
+    def on_triangle_release(self):
+       GPIO.output(29, GPIO.LOW)
 
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
