@@ -14,15 +14,15 @@ servo1.ChangeDutyCycle(0)
 xState = 0
 maxValue = 32767
 
-class MyController(Controller):
-    def __init__(self, **kwargs):
-        Controller.__init__(self, **kwargs)
-
-    def getState(value):
+def getState(value):
         global maxValue
         for div in range(1,6):
             if value <= div*(maxValue/5):
                 return div
+
+class MyController(Controller):
+    def __init__(self, **kwargs):
+        Controller.__init__(self, **kwargs)
 
     def on_L3_left(self, value):
         global xState
