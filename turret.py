@@ -60,7 +60,7 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(0)
         xState = 0
 
-    def on_R3_up(self, value):
+    def on_R3_down(self, value):
         global yState
         state = getState(-value)
         if -state != yState:
@@ -72,7 +72,7 @@ class MyController(Controller):
         print(f"Value: {value}, State: {yState}")
         
 
-    def on_R3_down(self, value):
+    def on_R3_up(self, value):
         global yState
         state = getState(value)
         if state != yState:
