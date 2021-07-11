@@ -51,10 +51,10 @@ class MyController(Controller):
         state = getState(value)
         if state != xState:
             print(f"{state}, {xState}")
-            servo1.ChangeDutyCycle(state+7)
+            servo1.ChangeDutyCycle(state-7)
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
-            xState=-state
+            xState=state
         print(f"Value: {value}, State: {xState}")
 
     def on_L3_x_at_rest(self):
