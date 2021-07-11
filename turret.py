@@ -1,4 +1,3 @@
-from tests import getState
 import RPi.GPIO as GPIO
 from time import sleep
 from pyPS4Controller.controller import Controller
