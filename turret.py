@@ -103,13 +103,6 @@ class MyController(Controller):
     def on_R2_release(self):
        GPIO.output(29, GPIO.LOW)
 
-    def on_R1_press(self, value):
-        if GPIO.output(29):
-            GPIO.output(29, GPIO.HIGH)
-        else:
-            GPIO.output(29, GPIO.LOW)
-
-
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
     controller.listen(timeout=60)
