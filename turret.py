@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(36, GPIO.OUT)
 servo1 = GPIO.PWM(36,50)
 GPIO.setup(32, GPIO.OUT)
-servo2 = GPIO.PWM(36,50)
+servo2 = GPIO.PWM(32,50)
 
 servo1.start(0)
 servo1.ChangeDutyCycle(2)
