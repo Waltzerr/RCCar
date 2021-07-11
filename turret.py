@@ -1,3 +1,4 @@
+from tests import getState
 import RPi.GPIO as GPIO
 from time import sleep
 from pyPS4Controller.controller import Controller
@@ -12,23 +13,36 @@ servo1.ChangeDutyCycle(2)
 servo1.ChangeDutyCycle(0)
 
 xState = 0
+maxValue = 32767
 
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
+    def getState(value):
+        global maxValue
+        for div in range(1,6):
+            if value <= div*(maxValue/5):
+                return div
+
     def on_L3_left(self, value):
         global xState
-        if -value <= (15384) and xState != -1:
-            servo1.ChangeDutyCycle(9.5)
+        state = getState(-value)
+        if state != xState:
+            servo1.ChangeDutyCycle(state+7)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
-            xState=-1
-        if -value > (17384) and xState != -2:
-            servo1.ChangeDutyCycle(12)
-            sleep(0.1)
-            servo1.ChangeDutyCycle(0)
-            xState=-2
+            xState=-state
+        # if -value <= (15384) and xState != -1:
+        #     servo1.ChangeDutyCycle(9.5)
+        #     sleep(0.1)
+        #     servo1.ChangeDutyCycle(0)
+        #     xState=-1
+        # if -value > (17384) and xState != -2:
+        #     servo1.ChangeDutyCycle(12)
+        #     sleep(0.1)
+        #     servo1.ChangeDutyCycle(0)
+        #     xState=-2
         print(f"Value: {value}, State: {xState}")
         
 
@@ -65,4 +79,5 @@ try:
 except:
     servo1.stop()
     GPIO.cleanup()
+    print("Turret disconnected")
     quit()
