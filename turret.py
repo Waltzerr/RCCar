@@ -60,21 +60,9 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(0)
         xState = 0
 
-    def on_R3_down(self, value):
-        global yState
-        state = getState(value)
-        if state != yState:
-            print(f"{state}, {yState}")
-            servo2.ChangeDutyCycle(7-state)
-            sleep(0.05)
-            servo2.ChangeDutyCycle(0)
-            yState=state
-        print(f"Value: {value}, State: {yState}")
-        
-
     def on_R3_up(self, value):
         global yState
-        state = getState(-value)
+        state = getState(value)
         if -state != yState:
             print(f"{state}, {yState}")
             servo2.ChangeDutyCycle(state+7)
@@ -83,6 +71,17 @@ class MyController(Controller):
             yState=-state
         print(f"Value: {value}, State: {yState}")
         
+
+    def on_R3_down(self, value):
+        global yState
+        state = getState(-value)
+        if state != yState:
+            print(f"{state}, {yState}")
+            servo2.ChangeDutyCycle(7-state)
+            sleep(0.05)
+            servo2.ChangeDutyCycle(0)
+            yState=state
+        print(f"Value: {value}, State: {yState}")
 
     def on_R3_y_at_rest(self):
         global yState
