@@ -33,16 +33,6 @@ class MyController(Controller):
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
             xState=-state
-        # if -value <= (15384) and xState != -1:
-        #     servo1.ChangeDutyCycle(9.5)
-        #     sleep(0.1)
-        #     servo1.ChangeDutyCycle(0)
-        #     xState=-1
-        # if -value > (17384) and xState != -2:
-        #     servo1.ChangeDutyCycle(12)
-        #     sleep(0.1)
-        #     servo1.ChangeDutyCycle(0)
-        #     xState=-2
         print(f"Value: {value}, State: {xState}")
         
 
@@ -51,7 +41,7 @@ class MyController(Controller):
         state = getState(value)
         if state != xState:
             print(f"{state}, {xState}")
-            servo1.ChangeDutyCycle(state-7)
+            servo1.ChangeDutyCycle(7-state)
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
             xState=state
