@@ -48,7 +48,7 @@ class MyController(Controller):
 
     def on_L3_right(self, value):
         global xState
-        state = getState(-value)
+        state = getState(value)
         if state != xState:
             print(f"{state}, {xState}")
             servo1.ChangeDutyCycle(state+7)
