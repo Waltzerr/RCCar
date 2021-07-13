@@ -37,6 +37,7 @@ class MyController(Controller):
             xState += 0.5
             servo1.ChangeDutyCycle(xState)
             sleep(0.01)
+            servo1.ChangeDutyCycle(0)
 
     def on_left_arrow_press(self):
         global xState
@@ -44,6 +45,7 @@ class MyController(Controller):
             xState += -0.5
             servo1.ChangeDutyCycle(xState)
             sleep(0.01)
+            servo1.ChangeDutyCycle(0)
 
     def on_up_arrow_press(self):
         global yState
@@ -51,6 +53,7 @@ class MyController(Controller):
             yState += 0.5
             servo1.ChangeDutyCycle(yState)
             sleep(0.01)
+            servo1.ChangeDutyCycle(0)
 
     def on_down_arrow_press(self):
         global yState
@@ -58,6 +61,7 @@ class MyController(Controller):
             yState += -0.5
             servo1.ChangeDutyCycle(yState)
             sleep(0.01)
+            servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
         servo1.ChangeDutyCycle(7)
