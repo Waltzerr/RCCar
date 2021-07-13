@@ -32,8 +32,7 @@ def getState(value):
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-        if test:
-            print("cum")
+        print('cum1')
 
     def on_left_arrow_press(self):
         global xState
@@ -88,6 +87,7 @@ class MyController(Controller):
 try:
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
     controller.listen(timeout=60)
+    print('cum2')
 except:
     servo1.stop()
     GPIO.cleanup()
