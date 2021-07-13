@@ -2,6 +2,5 @@ import turret2
 import RPi.GPIO as GPIO
 from time import sleep
 
-turret2.start()
-while turret2.quit != True:
-    print("cum")
+if turret2.controller.on_circle_press:
+    print('cum')
