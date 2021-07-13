@@ -58,11 +58,13 @@ class MyController(Controller):
 
     def on_up_arrow_press(self):
         global yState
-        if yState > 1:
-            yState += -stateAdj
-            servo2.ChangeDutyCycle(yState)
-            sleep(0.05)
-            servo2.ChangeDutyCycle(0)
+        while True:
+            if yState > 1:
+                yState += -stateAdj
+                servo2.ChangeDutyCycle(yState)
+                sleep(0.05)
+                servo2.ChangeDutyCycle(0)
+        
 
     def on_circle_press(self):
         servo1.ChangeDutyCycle(7)
