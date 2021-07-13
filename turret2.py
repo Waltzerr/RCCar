@@ -39,7 +39,7 @@ class MyController(Controller):
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
 
-    def on_left_arrow_press(self):
+    def on_right_arrow_press(self):
         global xState
         if xState > 1:
             xState += -1
