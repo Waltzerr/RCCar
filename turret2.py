@@ -36,7 +36,7 @@ class MyController(Controller):
         if xState < 12:
             xState += 0.5
             servo1.ChangeDutyCycle(xState)
-            sleep(0.01)
+            sleep(0.05)
             servo1.ChangeDutyCycle(0)
 
     def on_left_arrow_press(self):
@@ -44,7 +44,7 @@ class MyController(Controller):
         if xState > 1:
             xState += -0.5
             servo1.ChangeDutyCycle(xState)
-            sleep(0.01)
+            sleep(0.05)
             servo1.ChangeDutyCycle(0)
 
     def on_up_arrow_press(self):
@@ -52,7 +52,7 @@ class MyController(Controller):
         if yState < 12:
             yState += 0.5
             servo1.ChangeDutyCycle(yState)
-            sleep(0.01)
+            sleep(0.05)
             servo1.ChangeDutyCycle(0)
 
     def on_down_arrow_press(self):
@@ -60,7 +60,7 @@ class MyController(Controller):
         if yState > 1:
             yState += -0.5
             servo1.ChangeDutyCycle(yState)
-            sleep(0.01)
+            sleep(0.05)
             servo1.ChangeDutyCycle(0)
 
     def on_circle_press(self):
