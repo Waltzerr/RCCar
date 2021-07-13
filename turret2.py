@@ -21,7 +21,7 @@ stateAdj = 0.5
 xState = 7
 yState = 7
 maxValue = 32767
-test = False
+quit = False
 
 def getState(value):
         global maxValue
@@ -32,7 +32,11 @@ def getState(value):
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-        print('cum1')
+        servo1.ChangeDutyCycle(7)
+        servo1.ChangeDutyCycle(0)
+        servo2.ChangeDutyCycle(7)
+        servo2.ChangeDutyCycle(0)
+
 
     def on_left_arrow_press(self):
         global xState
@@ -58,14 +62,8 @@ class MyController(Controller):
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
 
-    def on_up_down_arrow_release(self):
-        global test
-        test = False
-
     def on_up_arrow_press(self):
         global yState
-        global test
-        test = True
         if yState > 1:
             yState += -stateAdj
             servo2.ChangeDutyCycle(yState)
@@ -76,6 +74,7 @@ class MyController(Controller):
         servo1.ChangeDutyCycle(7)
         sleep(0.25)
         servo1.ChangeDutyCycle(0)
+        quit = True
         quit()
 
     def on_R2_press(self, value):
@@ -84,12 +83,12 @@ class MyController(Controller):
     def on_R2_release(self):
        GPIO.output(29, GPIO.LOW)
 
-try:
-    controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-    controller.listen(timeout=60)
-    print('cum2')
-except:
-    servo1.stop()
-    GPIO.cleanup()
-    print("Turret disconnected")
-    quit()
+def start():
+    try:
+        controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+        controller.listen(timeout=60)
+    except:
+        servo1.stop()
+        GPIO.cleanup()
+        print("Turret disconnected")
+        quit()
