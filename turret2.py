@@ -21,6 +21,10 @@ stateAdj = 0.5
 xState = 7
 yState = 7
 maxValue = 32767
+test = False
+
+if test:
+    print("cum")
 
 def getState(value):
         global maxValue
@@ -56,15 +60,19 @@ class MyController(Controller):
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
 
+    def on_up_arrow_release(self):
+        global test
+        test = False
+
     def on_up_arrow_press(self):
         global yState
-        while True:
-            if yState > 1:
-                yState += -stateAdj
-                servo2.ChangeDutyCycle(yState)
-                sleep(0.05)
-                servo2.ChangeDutyCycle(0)
-        
+        global test
+        test = True
+        if yState > 1:
+            yState += -stateAdj
+            servo2.ChangeDutyCycle(yState)
+            sleep(0.05)
+            servo2.ChangeDutyCycle(0)
 
     def on_circle_press(self):
         servo1.ChangeDutyCycle(7)
