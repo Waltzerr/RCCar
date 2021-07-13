@@ -23,9 +23,6 @@ yState = 7
 maxValue = 32767
 test = False
 
-if test:
-    print("cum")
-
 def getState(value):
         global maxValue
         for div in range(1,6):
@@ -35,6 +32,8 @@ def getState(value):
 class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
+        if test:
+            print("cum")
 
     def on_left_arrow_press(self):
         global xState
@@ -60,7 +59,7 @@ class MyController(Controller):
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
 
-    def on_up_arrow_release(self):
+    def on_up_down_arrow_release(self):
         global test
         test = False
 
