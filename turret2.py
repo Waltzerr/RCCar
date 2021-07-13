@@ -47,7 +47,7 @@ class MyController(Controller):
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
 
-    def on_up_arrow_press(self):
+    def on_down_arrow_press(self):
         global yState
         if yState < 12:
             yState += 1
@@ -55,7 +55,7 @@ class MyController(Controller):
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
 
-    def on_down_arrow_press(self):
+    def on_up_arrow_press(self):
         global yState
         if yState > 1:
             yState += -1
