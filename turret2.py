@@ -17,6 +17,7 @@ servo2.start(0)
 servo2.ChangeDutyCycle(2)
 servo2.ChangeDutyCycle(0)
 
+stateAdj = 0.5
 xState = 7
 yState = 7
 maxValue = 32767
@@ -34,7 +35,7 @@ class MyController(Controller):
     def on_left_arrow_press(self):
         global xState
         if xState < 12:
-            xState += 1
+            xState += stateAdj
             servo1.ChangeDutyCycle(xState)
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
@@ -42,7 +43,7 @@ class MyController(Controller):
     def on_right_arrow_press(self):
         global xState
         if xState > 1:
-            xState += -1
+            xState += -stateAdj
             servo1.ChangeDutyCycle(xState)
             sleep(0.05)
             servo1.ChangeDutyCycle(0)
@@ -50,7 +51,7 @@ class MyController(Controller):
     def on_down_arrow_press(self):
         global yState
         if yState < 12:
-            yState += 1
+            yState += stateAdj
             servo2.ChangeDutyCycle(yState)
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
@@ -58,7 +59,7 @@ class MyController(Controller):
     def on_up_arrow_press(self):
         global yState
         if yState > 1:
-            yState += -1
+            yState += -stateAdj
             servo2.ChangeDutyCycle(yState)
             sleep(0.05)
             servo2.ChangeDutyCycle(0)
