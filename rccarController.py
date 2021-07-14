@@ -44,6 +44,9 @@ class MyController(Controller):
    def on_x_release(self):
       GPIO.output(16, GPIO.LOW)
 
+   def on_x_press(self):
+      GPIO.output(16, GPIO.HIGH)
+
    def on_circle_release(self):
       GPIO.output(18, GPIO.LOW)
 
