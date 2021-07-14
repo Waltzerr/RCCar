@@ -64,7 +64,7 @@ class MyController(Controller):
             xState = 0
             print(f"X: {xState}")
 
-    def on_R3_down(self, value):
+    def on_R3_up(self, value):
         global yState
         if -value <= (15384) and -value > 1500 and yState != -1:
             servo2.ChangeDutyCycle(9.5)
@@ -80,7 +80,7 @@ class MyController(Controller):
             print(f"Value: {value}, Y: {yState}")
         
 
-    def on_R3_up(self, value):
+    def on_R3_down(self, value):
         global yState
         if value <= (15384) and value > 1500 and yState != 1:
             servo2.ChangeDutyCycle(4.5)
