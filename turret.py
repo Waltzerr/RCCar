@@ -42,7 +42,7 @@ class MyController(Controller):
 
     def on_R3_right(self, value):
         global xState
-        if value <= (15384) and xState != 1:
+        if value <= (15384) and value > 1500 and xState != 1:
             servo1.ChangeDutyCycle(4.5)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
@@ -63,6 +63,46 @@ class MyController(Controller):
             servo1.ChangeDutyCycle(0)
             xState = 0
             print(f"X: {xState}")
+
+    def on_L3_left(self, value):
+        global yState
+        if -value <= (15384) and -value > 1500 and yState != -1:
+            servo2.ChangeDutyCycle(9.5)
+            sleep(0.1)
+            servo2.ChangeDutyCycle(0)
+            yState=-1
+            print(f"Value: {value}, Y: {yState}")
+        elif -value > (17384) and yState != -2:
+            servo2.ChangeDutyCycle(12)
+            sleep(0.1)
+            servo2.ChangeDutyCycle(0)
+            yState=-2
+            print(f"Value: {value}, Y: {yState}")
+        
+
+    def on_L3_right(self, value):
+        global yState
+        if value <= (15384) and value > 1500 and yState != 1:
+            servo2.ChangeDutyCycle(4.5)
+            sleep(0.1)
+            servo2.ChangeDutyCycle(0)
+            yState=1
+            print(f"Value: {value}, Y: {yState}")
+        elif value > (17384) and yState != 2:
+            servo2.ChangeDutyCycle(2)
+            sleep(0.1)
+            servo2.ChangeDutyCycle(0)
+            yState=2
+            print(f"Value: {value}, Y: {yState}")
+
+    def on_L3_y_at_rest(self):
+        global yState
+        if yState != 0:
+            servo2.ChangeDutyCycle(7)
+            sleep(0.1)
+            servo2.ChangeDutyCycle(0)
+            yState = 0
+            print(f"Y: {yState}")
 
     def on_circle_press(self):
         servo1.ChangeDutyCycle(7)
