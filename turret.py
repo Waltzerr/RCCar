@@ -64,15 +64,15 @@ class MyController(Controller):
             xState = 0
             print(f"X: {xState}")
 
-    def on_R3_up(self, value):
+    def on_R3_down(self, value):
         global yState
-        if -value <= (15384) and -value > 1500 and yState != -1:
+        if value <= (15384) and value > 1500 and yState != -1:
             servo2.ChangeDutyCycle(9.5)
             sleep(0.1)
             servo2.ChangeDutyCycle(0)
             yState=-1
             print(f"Value: {value}, Y: {yState}")
-        elif -value > (17384) and yState != -2:
+        elif value > (17384) and yState != -2:
             servo2.ChangeDutyCycle(12)
             sleep(0.1)
             servo2.ChangeDutyCycle(0)
@@ -80,15 +80,15 @@ class MyController(Controller):
             print(f"Value: {value}, Y: {yState}")
         
 
-    def on_R3_down(self, value):
+    def on_R3_up(self, value):
         global yState
-        if value <= (15384) and value > 1500 and yState != 1:
+        if -value <= (15384) and -value > 1500 and yState != 1:
             servo2.ChangeDutyCycle(4.5)
             sleep(0.1)
             servo2.ChangeDutyCycle(0)
             yState=1
             print(f"Value: {value}, Y: {yState}")
-        elif value > (17384) and yState != 2:
+        elif -value > (17384) and yState != 2:
             servo2.ChangeDutyCycle(2)
             sleep(0.1)
             servo2.ChangeDutyCycle(0)
