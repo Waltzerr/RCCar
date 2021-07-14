@@ -6,6 +6,7 @@ GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(36, GPIO.OUT)
 servo1 = GPIO.PWM(36,50)
+GPIO.setup(29, GPIO.OUT)
 
 servo1.start(0)
 servo1.ChangeDutyCycle(2)
@@ -17,7 +18,7 @@ class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
-    def on_L3_left(self, value):
+    def on_R3_left(self, value):
         global xState
         if -value <= (15384) and xState != -1:
             servo1.ChangeDutyCycle(9.5)
@@ -32,7 +33,7 @@ class MyController(Controller):
         print(f"Value: {value}, State: {xState}")
         
 
-    def on_L3_right(self, value):
+    def on_R3_right(self, value):
         global xState
         if value <= (15384) and xState != 1:
             servo1.ChangeDutyCycle(4.5)
@@ -45,7 +46,7 @@ class MyController(Controller):
             servo1.ChangeDutyCycle(0)
             xState=2
 
-    def on_L3_x_at_rest(self):
+    def on_R3_x_at_rest(self):
         global xState
         servo1.ChangeDutyCycle(7)
         sleep(0.1)
