@@ -10,6 +10,11 @@ GPIO.setup(32, GPIO.OUT)
 servo2 = GPIO.PWM(32,50)
 GPIO.setup(29, GPIO.OUT)
 
+GPIO.setup(31, GPIO.OUT)
+GPIO.output(31, GPIO.HIGH)
+GPIO.setup(33, GPIO.OUT)
+GPIO.output(33, GPIO.HIGH)
+
 servo1.start(0)
 servo1.ChangeDutyCycle(2)
 servo1.ChangeDutyCycle(0)
