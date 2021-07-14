@@ -26,7 +26,7 @@ class MyController(Controller):
 
     def on_R3_left(self, value):
         global xState
-        if -value <= (15384) and xState != -1:
+        if -value <= (15384) and -value > 500 and xState != -1:
             servo1.ChangeDutyCycle(9.5)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
