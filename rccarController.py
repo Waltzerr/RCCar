@@ -139,13 +139,6 @@ class MyController(Controller):
       GPIO.output(29, GPIO.LOW)
 
    def on_options_press(self):
-      servo1.ChangeDutyCycle(0)
-      servo2.ChangeDutyCycle(0)
-      servo1.ChangeDutyCycle(7)
-      servo2.ChangeDutyCycle(7)
-      servo2.stop()
-      servo1.stop()
-      GPIO.cleanup()
       quit()
 
 try:
@@ -153,5 +146,12 @@ try:
     # you can start listening before controller is paired, as long as you pair it within the timeout window
     controller.listen(timeout=60)
 except:
-    print("Error connecting to controller")
-    quit()
+   servo1.ChangeDutyCycle(0)
+   servo2.ChangeDutyCycle(0)
+   servo1.ChangeDutyCycle(7)
+   servo2.ChangeDutyCycle(7)
+   servo2.stop()
+   servo1.stop()
+   GPIO.cleanup()
+   print("Disconnected")
+   quit()
