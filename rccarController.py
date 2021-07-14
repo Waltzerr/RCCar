@@ -135,6 +135,7 @@ class MyController(Controller):
             servo2.ChangeDutyCycle(0)
             yState = 0
             #print(f"Y: {yState}")
+            
 
    def on_R2_press(self, value):
       GPIO.output(29, GPIO.HIGH)
