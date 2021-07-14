@@ -31,12 +31,13 @@ class MyController(Controller):
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=-1
-        if -value > (17384) and xState != -2:
+            print(f"Value: {value}, State: {xState}")
+        elif -value > (17384) and xState != -2:
             servo1.ChangeDutyCycle(12)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=-2
-        print(f"Value: {value}, State: {xState}")
+            print(f"Value: {value}, State: {xState}")
         
 
     def on_R3_right(self, value):
@@ -46,11 +47,13 @@ class MyController(Controller):
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=1
-        if value > (17384) and xState != 2:
+            print(f"Value: {value}, State: {xState}")
+        elif value > (17384) and xState != 2:
             servo1.ChangeDutyCycle(2)
             sleep(0.1)
             servo1.ChangeDutyCycle(0)
             xState=2
+            print(f"Value: {value}, State: {xState}")
 
     def on_R3_x_at_rest(self):
         global xState
